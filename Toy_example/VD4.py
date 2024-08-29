@@ -7,6 +7,9 @@ from pymoo.util.ref_dirs import get_reference_directions
 from pymoo.visualization.scatter import Scatter
 import os 
 from pytictoc import TicToc
+import matplotlib as mpl
+mpl.rcParams.update(mpl.rcParamsDefault)
+
 Kappa = 0.5
 k = 0
 alpha = 0
@@ -153,13 +156,13 @@ if __name__ == "__main__":
     pf = create_pf_convex()
     plt.figure(figsize=(10, 6))
     plt.scatter(pf[:,0],pf[:,1], s=1, color = 'blue')
-    plt.xlabel("f1(x)")
-    plt.ylabel("f2(x)")
+    plt.xlabel("$g_1(\\theta)$")
+    plt.ylabel("$g_2(\\theta)$")
     plt.plot(pf[:,0],pf[:,1])
     # plt.grid(True)
     x = [p[0] for p in res]
     y = [p[1] for p in res]
     plt.plot(x, y, 'o', color = 'red')
-    plt.savefig(r'/home/ubuntu/workspace/DANC/Toy_example/images/VD4_1.png')
+    plt.savefig(r'/home/ubuntu/workspace/DANC/Toy_example/images/VD4_2.png')
     plt.show()
 

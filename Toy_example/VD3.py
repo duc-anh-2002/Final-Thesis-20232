@@ -8,6 +8,8 @@ from pymoo.visualization.scatter import Scatter
 import os 
 from math import e
 from pytictoc import TicToc
+import matplotlib as mpl
+mpl.rcParams.update(mpl.rcParamsDefault)
 
 Kappa = 0.5
 k = 0
@@ -174,8 +176,8 @@ if __name__ == "__main__":
     t.toc()
     print(res)
     pf = create_pf_concave()
-    plt.xlabel("f1(x)")
-    plt.ylabel("f2(x)")
+    plt.xlabel("$g_1(\\theta)$")
+    plt.ylabel("$g_2(\\theta)$")
     plt.plot(pf[:,0],pf[:,1])
     x = [p[0].detach().numpy() for p in res]
     y = [p[1].detach().numpy() for p in res]

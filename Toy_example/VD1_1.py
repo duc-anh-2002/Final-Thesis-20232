@@ -6,6 +6,8 @@ import torch, math, random
 from pymoo.util.ref_dirs import get_reference_directions
 from pymoo.visualization.scatter import Scatter
 import os 
+import matplotlib as mpl
+mpl.rcParams.update(mpl.rcParamsDefault)
 Kappa = 0.5
 k = 0
 alpha = 0
@@ -119,8 +121,9 @@ if __name__ == "__main__":
         res.append([f(x_new, 1, ref[i]) * ref[i][0], f(x_new, 2, ref[i]) * ref[i][1]])
     print(res)
     pf = create_pf1()
-    plt.xlabel("f1(x)")
-    plt.ylabel("f2(x)")
+    plt.xlabel("$g_1(\\theta)$")
+    plt.ylabel("$g_2(\\theta)$")
+    # plt.title()
     plt.plot(pf[:,0],pf[:,1])
     x = [p[0] for p in res]
     y = [p[1] for p in res]
