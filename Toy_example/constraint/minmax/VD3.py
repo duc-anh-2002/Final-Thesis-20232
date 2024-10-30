@@ -14,6 +14,15 @@ eps = 0.4
 delta = 0.3
 num_of_component_functions = 2
 
+def f(x, i):
+    if i == 1:
+        return (x[0] + 1)/(-x[0]**2 + 3*x[0] -x[1]**2 + 3*x[1] + 3.5)
+    if i == 2:
+        return (x[0]**2 - 2*x[0] + x[1]**2 - 8*x[1] + 20)/x[1]
+
+def F(x):
+    return max(f(x, i) for i in range (1, num_of_component_functions + 1))
+
 def J_delta(x):
     J_delta = []
     for i in range (1, num_of_component_functions + 1):
@@ -21,19 +30,12 @@ def J_delta(x):
             J_delta.append(i)
     return J_delta
 
-
 def J_h(x):
     J_h = []
     for i in range (1, 6):
         if (g(x, i) == 0):
             J_h.append(i)
     return J_h
-
-def f(x, i):
-    if i == 1:
-        return (x[0] + 1)/(-x[0]**2 + 3*x[0] -x[1]**2 + 3*x[1] + 3.5)
-    if i == 2:
-        return (x[0]**2 - 2*x[0] + x[1]**2 - 8*x[1] + 20)/x[1]
      
 def g(x, i):
     if i == 1:
@@ -46,10 +48,7 @@ def g(x, i):
         return 1 - x[0]
     if i == 5:
         return 1 - x[1]
-
-def F(x):
-    return max(f(x, i) for i in range (1, num_of_component_functions + 1))
-
+    
 def objective(X, x):
     return X[0] + 1/2 * np.linalg.norm(X[1:])**2     
 
@@ -210,7 +209,8 @@ if __name__ == "__main__":
     time_taken_list = []
     ref = get_scaled_reference_directions(10, min_f1, max_f1, min_f2, max_f2)
     for i in range (1):
-        x0 = [float(random.randrange(-10.0, 10.0)), float(random.randrange(-10.0, 10.0))]
+        # x0 = [float(random.randrange(-10.0, 10.0)), float(random.randrange(-10.0, 10.0))]
+        x0 = [float(random.randrange(1.0, 10.0)), float(random.randrange(1.0, 10.0))]
         # print(x0)
         # x0 = [1.0, 2.0]
         # x0 = [-2.0, -10.0]
